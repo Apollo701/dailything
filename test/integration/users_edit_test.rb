@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
   
   def setup
-  	@user = users(:micahel)
+  	@user = users(:michael)
   end
 
   test "unsuccessful edit" do
