@@ -10,13 +10,8 @@ class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/password_reset
   def password_reset
-    user = users(:michael)
+    user = User.first
     user.reset_token = User.new_token
-    mail = UserMailer.password_reset(user)
-    assert_equal "Password reset", mail.subject
-    assert_equal [user.email], mail.to
-    assert_equal ["noreply@example.com"], mail.from
-    assert_match user.reset_token,        mail.body.enclosed
-    assert_match CGI::escape(user.email), mail.body.enclosed
+    UserMailer.password_reset(user)
   end
 end
